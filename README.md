@@ -1,12 +1,79 @@
-# React + Vite
+# 🖥️ Shruti's Retro OS Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A pixel-perfect, retro-inspired web portfolio built with React, Tailwind CSS, and Framer Motion — bringing the charm of vintage operating systems to life in the browser.
 
-Currently, two official plugins are available:
+## 🕹️ Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This portfolio mimics the experience of using an old-school OS: draggable desktop icons, bootloader screens, pixel fonts, glitch transitions, and windowed apps — all powered by modern web technologies.
 
-## Expanding the ESLint configuration
+You'll find sections like:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🧑‍💻 About.exe — a window into who I am
+- 💼 Projects.exe — selected works & experiments
+- 🎨 ArtStudio.exe — a creative corner where I paint after hours
+- 📬 Contact.exe — ways to connect
+- 🐰 BootLoader — a pixel rabbit welcomes you on load
+
+---
+
+## 🔧 Built With
+
+- ⚛️ [React](https://reactjs.org/) — Core framework
+- 🎨 [Tailwind CSS](https://tailwindcss.com/) — Styling
+- 🌀 [Framer Motion](https://www.framer.com/motion/) — Animations
+- 🖱️ [react-draggable](https://www.npmjs.com/package/react-draggable) — Window dragging
+- 🖼️ Custom pixel fonts, assets, and icons
+- 🖼️ Cursor + retro sounds for immersive OS feel
+
+---
+
+## 🧑‍🎨 Features
+
+- Custom bootloader animation (featuring a hopping rabbit 🐇)
+- Clickable desktop icons that open draggable windows
+- Start Menu with application launcher
+- Retro taskbar, sticky notes, and pixel-perfect borders
+- Custom cursor and hover sound effects
+- Framer Motion zoom-ins for timeline storytelling
+- Pixel-art UI mimicking Windows 95/98 aesthetics
+
+---
+
+## 🚀 Getting Started
+
+1. **Clone the repo**
+
+```bash
+git clone https://github.com/shrutitaylor/retro-os-portfolio.git
+cd retro-os-portfolio
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Start the dev server**
+
+```bash
+npm run dev
+```
+
+## 🎉 Credits & Inspiration
+
+- Classic Windows 95/98 UI inspiration
+- Pixel font - ppmondwest
+- Icons from Flaticon
+- Framer Motion & Tailwind Docs
+
+---
+
+## 🪄 Fun Fact
+
+> This portfolio doesn’t just showcase my work — it **is** my work.
+
+```
+
+---
+
