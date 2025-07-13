@@ -8,6 +8,7 @@ import ExperienceIcon from "./assets/desktopIcons/experience.png";
 import StudyIcon from "./assets/desktopIcons/study.png";
 import ProjectsIcon from "./assets/desktopIcons/projects.png";
 import ArtIcon from "./assets/desktopIcons/art.png";
+import SkillIcon from "./assets/desktopIcons/skills.png";
 import back from "./assets/gif/desktop-bg.gif"
 import StickyNote from "./components/StickyNote";
 import useRetroSounds from "./utils/sounds"
@@ -20,6 +21,7 @@ import Projects from "./pages/Projects";
 import Study from "./pages/Study";
 import Experience from "./pages/Experience";
 import Art from "./pages/Art";
+import Skills from "./pages/Skills";
 
 export default function App() {
   const [booted, setBooted] = useState(false);
@@ -51,7 +53,7 @@ export default function App() {
           }
            <img src={butterfly} className="h-24 w-24 object-cover fixed bottom-20 right-10 cursor-pointer"></img>
           {/* Desktop Icons */}
-          <div className="absolute top-4 left-4 grid grid-cols-2 gap-6">
+          <div className="absolute top-4 left-4 grid grid-cols-1 sm:grid-cols-2 gap-6">
             <DesktopIcon
               icon={AboutIcon}
               label="About.exe"
@@ -71,6 +73,11 @@ export default function App() {
               icon={StudyIcon}
               label="Education.exe"
               onClick={() => openWindow("study")}
+            />
+            <DesktopIcon
+              icon={SkillIcon}
+              label="Skills.exe"
+              onClick={() => openWindow("skills")}
             />
             <DesktopIcon
               icon={ArtIcon}
@@ -98,6 +105,11 @@ export default function App() {
            {openApps.includes("exp") && (
             <Window title="Experience.exe" onClose={() => closeWindow("exp")}>
               <Experience/>
+            </Window>
+          )}
+          {openApps.includes("skills") && (
+            <Window title="Skills.exe" onClose={() => closeWindow("skills")}>
+              <Skills/>
             </Window>
           )}
           {openApps.includes("art") && (

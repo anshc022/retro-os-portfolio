@@ -3,6 +3,11 @@ import { useState } from "react";
 import morning from "../assets/buttons/morning.png";
 import night from "../assets/buttons/night.png";
 import clock from "../assets/buttons/clock.png";
+import AboutIcon from "../assets/desktopIcons/about.png";
+import ExperienceIcon from "../assets/desktopIcons/experience.png";
+import StudyIcon from "../assets/desktopIcons/study.png";
+import ProjectsIcon from "../assets/desktopIcons/projects.png";
+import ArtIcon from "../assets/desktopIcons/art.png";
 export default function Taskbar({ onAppClick, onThemeChange, currentTheme }) {
 
   const [showMenu, setShowMenu] = useState(false);
@@ -20,7 +25,7 @@ export default function Taskbar({ onAppClick, onThemeChange, currentTheme }) {
             }}
             className="px-3 py-2 hover:bg-blue-600 border-b-2 border-gray-300 hover:text-white cursor-pointer"
           >
-            📄 About.exe
+            <img src={AboutIcon} alt="About" className="inline-block w-4 h-4 mr-2" /> About.exe
           </div>
           <div
             onClick={() => {
@@ -29,7 +34,7 @@ export default function Taskbar({ onAppClick, onThemeChange, currentTheme }) {
             }}
             className="px-3 py-2 hover:bg-blue-600 border-b-2 border-gray-300 hover:text-white cursor-pointer"
           >
-            📁 Projects.exe
+          <img src={ProjectsIcon} alt="Projects" className="inline-block w-4 h-4 mr-2" /> Projects.exe
           </div>
           <div
             onClick={() => {
@@ -38,7 +43,7 @@ export default function Taskbar({ onAppClick, onThemeChange, currentTheme }) {
             }}
             className="px-3 py-2 hover:bg-blue-600 border-b-2 border-gray-300 hover:text-white cursor-pointer"
           >
-            📁 Education.exe
+            <img src={StudyIcon} alt="Study" className="inline-block w-4 h-4 mr-2" /> Education.exe
           </div>
           <div
             onClick={() => {
@@ -47,7 +52,7 @@ export default function Taskbar({ onAppClick, onThemeChange, currentTheme }) {
             }}
             className="px-3 py-2 hover:bg-blue-600 border-b-2 border-gray-300 hover:text-white cursor-pointer"
           >
-            📁 Experience.exe
+            <img src={ExperienceIcon} alt="Experience" className="inline-block w-4 h-4 mr-2" /> Experience.exe
           </div>
           <div
             onClick={() => {
@@ -56,7 +61,7 @@ export default function Taskbar({ onAppClick, onThemeChange, currentTheme }) {
             }}
             className="px-3 py-2 hover:bg-blue-600 border-b-2 border-gray-300 hover:text-white cursor-pointer"
           >
-            📁 ArtStudio.exe
+            <img src={ArtIcon} alt="Art" className="inline-block w-4 h-4 mr-2" /> ArtStudio.exe
           </div>
           <div
             onClick={() => {

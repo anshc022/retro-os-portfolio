@@ -1,11 +1,21 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import exp from "../assets/me/exp.gif";
 import { RefreshCw } from "lucide-react";
 
 export default function Experience() {
   const [focus, setFocus] = useState("none");
+// inside Experience component
+const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
+// Update screenWidth on resize
+useEffect(() => {
+  const handleResize = () => setScreenWidth(window.innerWidth);
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
+const panelWidth = screenWidth < 640 ? "310px" : "500px";
   // Define zoom areas
   const zoomConfig = {
     none: { scale: 1, x: 0, y: 0 },
@@ -53,15 +63,18 @@ export default function Experience() {
         />
         {/* Centered Expanding Info Panel */}
         {focus !== "none" && (
+          <>
           <motion.div
             key={focus} // so animation restarts when focus changes
-            initial={{ width: 0, opacity: 1, color:"transparent" }}
-            animate={{ width: "500px", opacity: 1, color:"black"  }}
-            transition={{ duration: 0.6, ease: "easeInOut", type:"spring"}}
-            className="absolute overflow-hidden h-44 top-32 left-48 p-4 shadow-xl text-sm sm:text-lg z-30 border-t-2 border-l-2 border-gray-200 border-b-2 border-r-2 border-b-gray-500 border-r-gray-500 bg-gray-300 text-black cursor-pointer shadow-md"
+            initial={{ width: 0, opacity: 0, color:"transparent" }}
+            animate={{ width: panelWidth, opacity: 1, color:"black"  }}
+            transition={{ duration: 0.6, ease: "easeInOut", type:"spring", delay: 1 }}
+            className="absolute  overflow-hidden sm:h-44 top-32 sm:left-48 p-4 shadow-xl text-sm sm:text-lg z-30 border-t-2 border-l-2 border-gray-200 border-b-2 border-r-2 border-b-gray-500 border-r-gray-500 bg-gray-300 text-black cursor-pointer shadow-md"
           >
             {focusText[focus]}
           </motion.div>
+          
+          </>
         )}
         {/* Buttons */}
         <div className="absolute bottom-5 sm:bottom-14 w-full justify-between flex flex-row sm:px-10 p-5">
