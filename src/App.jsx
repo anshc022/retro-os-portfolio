@@ -22,6 +22,7 @@ import Study from "./pages/Study";
 import Experience from "./pages/Experience";
 import Art from "./pages/Art";
 import Skills from "./pages/Skills";
+import SkillsComputer from "./pages/SkillsComputer";
 
 export default function App() {
   const [booted, setBooted] = useState(false);
@@ -110,6 +111,7 @@ export default function App() {
           {openApps.includes("skills") && (
             <Window title="Skills.exe" onClose={() => closeWindow("skills")}>
               <Skills/>
+              {/* <SkillsComputer /> */}
             </Window>
           )}
           {openApps.includes("art") && (

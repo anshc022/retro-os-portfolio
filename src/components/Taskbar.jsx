@@ -8,6 +8,9 @@ import ExperienceIcon from "../assets/desktopIcons/experience.png";
 import StudyIcon from "../assets/desktopIcons/study.png";
 import ProjectsIcon from "../assets/desktopIcons/projects.png";
 import ArtIcon from "../assets/desktopIcons/art.png";
+import LinkedIn from "../assets/desktopIcons/linkedin-pixel.png";
+import Github from "../assets/desktopIcons/github-pixel.png";
+import MailIcon from "../assets/desktopIcons/mail.png";
 export default function Taskbar({ onAppClick, onThemeChange, currentTheme }) {
 
   const [showMenu, setShowMenu] = useState(false);
@@ -85,8 +88,11 @@ export default function Taskbar({ onAppClick, onThemeChange, currentTheme }) {
         </button>
         
         <div className="ml-auto flex leading-sm flex-row px-4 text-sm sm:text-2xl">
-          {currentTheme === "morning" ? 
-          ( <img src={morning} className= "hover:scale-110 w-4 h-4 sm:w-8 sm:h-8 mx-2 cursor-pointer" onClick={() => onThemeChange("night")}></img>):
+           <a href="mailto:shruti@example.com" target="_blank"><img src={MailIcon} className= "hover:scale-110 w-4 h-4 sm:w-8 sm:h-8 mx-2 cursor-pointer" onClick={() => onThemeChange("night")}></img></a>
+          <a href="https://github.com/shrutitaylor/" target="_blank"><img src={Github} className= "hover:scale-110 w-4 h-4 sm:w-8 sm:h-8 mx-2 cursor-pointer" onClick={() => onThemeChange("night")}></img></a>
+          <a href="https://www.linkedin.com/in/shruti-ms/" target="_blank"><img src={LinkedIn} className= "hover:scale-110 w-4 h-4 sm:w-8 sm:h-8 mx-2 cursor-pointer" onClick={() => onThemeChange("night")}></img></a>
+         {currentTheme === "morning" ? 
+          ( <img src={morning} className= "hover:scale-110 w-4 h-3 sm:w-8 sm:h-8 mx-2 cursor-pointer" onClick={() => onThemeChange("night")}></img>):
            (<img src={night} className="hover:scale-110  w-4 h-4 sm:w-8 sm:h-8 w-8 h-8 mx-2 cursor-pointer" onClick={() => onThemeChange("morning")}></img>)
            }
           <img src={clock} className="sm:w-10 sm:h-9  w-4 h-4"></img>
