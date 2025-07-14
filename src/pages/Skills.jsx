@@ -5,18 +5,10 @@ import { Html, OrbitControls, useGLTF, Environment, PresentationControls } from 
 import { useState } from "react";
 
 import { X } from "lucide-react"; // optional close icon
-import Squares from "../components/Squares";
 
 function ComputerModel({ onPartClick }) {
-  const  gltf = useGLTF("/retro-os-portfolio/models/retro-computer.glb");
+  const  gltf = useGLTF("/models/retro-computer.glb");
 
-//   scene.traverse((child) => {
-//     if (child.isMesh) {
-//       child.castShadow = true;
-//       child.receiveShadow = true;
-//       child.userData = { name: child.name };
-//     }
-//   });
 
   return (
     <group
