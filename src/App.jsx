@@ -16,8 +16,6 @@ import StickyNote from "./components/StickyNote";
 import useRetroSounds from "./utils/sounds"
 import butterfly from "./assets/gif/butterfly.gif"
 import night from "./assets/gif/night-bg.jpg"
-import CustomCursor from "./components/CustomCursor";
-import { Button } from "pixel-react";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Study from "./pages/Study";

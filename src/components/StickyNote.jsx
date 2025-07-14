@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import welcome from "../assets/smiley/love.png"
-import { Button } from "pixel-react";
 
 export default function StickyNote({ defaultText = "📝 Type something...", color = "bg-yellow-200" }) {
   const [text, setText] = useState(defaultText);
