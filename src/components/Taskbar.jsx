@@ -68,12 +68,12 @@ export default function Taskbar({ onAppClick, onThemeChange, currentTheme }) {
           </div>
           <div
             onClick={() => {
-              onAppClick("contact");
+              onAppClick("connect");
               setShowMenu(false);
             }}
             className="px-3 py-2 hover:bg-blue-600 border-b-2 border-gray-300 hover:text-white cursor-pointer"
           >
-            📬 Contact.exe
+          <img src={MailIcon} alt="mAIL" className="inline-block w-4 h-4 mr-2" /> Contact.exe
           </div>
         </div>
       )}
@@ -87,13 +87,13 @@ export default function Taskbar({ onAppClick, onThemeChange, currentTheme }) {
           Start
         </button>
         
-        <div className="ml-auto flex leading-sm flex-row px-4 text-sm sm:text-2xl">
-           <a href="mailto:shruti@example.com" target="_blank"><img src={MailIcon} className= "hover:scale-110 w-4 h-4 sm:w-8 sm:h-8 mx-2 cursor-pointer" onClick={() => onThemeChange("night")}></img></a>
-          <a href="https://github.com/shrutitaylor/" target="_blank"><img src={Github} className= "hover:scale-110 w-4 h-4 sm:w-8 sm:h-8 mx-2 cursor-pointer" onClick={() => onThemeChange("night")}></img></a>
-          <a href="https://www.linkedin.com/in/shruti-ms/" target="_blank"><img src={LinkedIn} className= "hover:scale-110 w-4 h-4 sm:w-8 sm:h-8 mx-2 cursor-pointer" onClick={() => onThemeChange("night")}></img></a>
+        <div className="ml-auto flex leading-sm flex-row px-4 text-sm gap-2 sm:text-2xl">
+           <a href="mailto:shruti128770@gmail.com" target="_blank"><img src={MailIcon} className= "hover:scale-110 w-4 h-4 sm:w-8 sm:h-8 cursor-pointer" ></img></a>
+          <a href="https://github.com/shrutitaylor/" target="_blank"><img src={Github} className= "hover:scale-110 w-4 h-4 sm:w-8 sm:h-8  cursor-pointer"></img></a>
+          <a href="https://www.linkedin.com/in/shruti-ms/" target="_blank"><img src={LinkedIn} className= "hover:scale-110 w-4 h-4 sm:w-8 sm:h-8 cursor-pointer" ></img></a>
          {currentTheme === "morning" ? 
-          ( <img src={morning} className= "hover:scale-110 w-4 h-3 sm:w-8 sm:h-8 mx-2 cursor-pointer" onClick={() => onThemeChange("night")}></img>):
-           (<img src={night} className="hover:scale-110  w-4 h-4 sm:w-8 sm:h-8 w-8 h-8 mx-2 cursor-pointer" onClick={() => onThemeChange("morning")}></img>)
+          ( <img src={morning} className= "hover:scale-110 w-4 h-4 sm:w-8 sm:h-8  cursor-pointer" onClick={() => onThemeChange("night")}></img>):
+           (<img src={night} className="hover:scale-110  w-4 h-4 sm:w-8 sm:h-8 cursor-pointer" onClick={() => onThemeChange("morning")}></img>)
            }
           <img src={clock} className="sm:w-10 sm:h-9  w-4 h-4"></img>
           <div>{new Date().toLocaleTimeString()}</div>

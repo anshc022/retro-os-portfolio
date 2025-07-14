@@ -5,6 +5,7 @@ import { Html, OrbitControls, useGLTF, Environment, PresentationControls } from 
 import { useState } from "react";
 
 import { X } from "lucide-react"; // optional close icon
+import Squares from "../components/Squares";
 
 function ComputerModel({ onPartClick }) {
   const  gltf = useGLTF("/retro-os-portfolio/models/retro-computer.glb");
@@ -49,29 +50,32 @@ export default function Skills() {
   };
 
   return (
-    <div className="sm:w-[800px] w-full h-[400px] sm:h-[600px] flex justify-center items-center relative">
-      <Canvas shadows camera={{ position: [5, 1,0], fov: 35 }}> 
-  <ambientLight intensity={0.5} />
-  <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
-  <Environment preset="city" />
+    <>
+    
+    <div className="sm:w-[800px] w-full h-[400px] w-[300px] sm:h-[600px] flex justify-center items-center relative">
+    
+      <Canvas className=" " shadows camera={{ position: [5, 1,0], fov: 35 }}> 
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
+        <Environment preset="city" />
 
-  {/* Replace OrbitControls with this */}
-  <PresentationControls
-    global
-    config={{ mass: 1, tension: 10 }}
-    snap={true}
-    rotation={[0, 0.3, 0]}
-    polar={[-0.2, 0.2]} // vertical movement range
-    azimuth={[-0.4, 0.4]} // horizontal movement range
-  >
-    <ComputerModel onPartClick={handlePartClick} />
-  </PresentationControls>
-</Canvas>
-<button onClick={() => handlePartClick({partName: "monitor"})} className="hover:scale-110 absolute top-24 left-44 px-4 bg-blue-500 border-t border-l border-white border-b-2 border-r-2 border-b-gray-700 border-r-gray-700 shadow-md "> 
+        {/* Replace OrbitControls with this */}
+        <PresentationControls
+          global
+          config={{ mass: 1, tension: 10 }}
+          snap={true}
+          rotation={[0, 0.3, 0]}
+          polar={[-0.2, 0.2]} // vertical movement range
+          azimuth={[-0.4, 0.4]} // horizontal movement range
+        >
+          <ComputerModel onPartClick={handlePartClick} />
+        </PresentationControls>
+      </Canvas>
+<button onClick={() => handlePartClick({partName: "monitor"})} className="hover:scale-110 absolute top-24 left-5 sm:left-44 px-4 bg-blue-500 border-t border-l border-white border-b-2 border-r-2 border-b-gray-700 border-r-gray-700 shadow-md "> 
   Frontend</button>
-<button onClick={() => handlePartClick({partName: "cpu"})} className="hover:scale-110 absolute bottom-52 right-64 px-4 bg-blue-500 border-t border-l border-white border-b-2 border-r-2 border-b-gray-700 border-r-gray-700 shadow-md "> 
+<button onClick={() => handlePartClick({partName: "cpu"})} className="hover:scale-110 absolute bottom-24 sm:bottom-52 right-5 sm:right-64 px-4 bg-blue-500 border-t border-l border-white border-b-2 border-r-2 border-b-gray-700 border-r-gray-700 shadow-md "> 
   Backend</button>
-<button onClick={() => handlePartClick({partName: "keyboard"})} className="hover:scale-110 absolute bottom-44 left-52 px-4 bg-blue-500 border-t border-l border-white border-b-2 border-r-2 border-b-gray-700 border-r-gray-700 shadow-md "> 
+<button onClick={() => handlePartClick({partName: "keyboard"})} className="hover:scale-110 absolute sm:bottom-44 bottom-10 left-10 sm:left-52 px-4 bg-blue-500 border-t border-l border-white border-b-2 border-r-2 border-b-gray-700 border-r-gray-700 shadow-md "> 
   Tools</button>
 
       {activeSkill && (
@@ -91,5 +95,6 @@ export default function Skills() {
         </div>
       )}
     </div>
+    </>
   );
 }

@@ -21,7 +21,7 @@ const Window = ({ title, children, onClose }) => {
   return (
     <motion.div
       ref={ref}
-      className="absolute min-w-80 select-none z-50 h-full"
+      className="absolute min-w-80 mt-10 select-none z-50 h-full"
       drag
       dragConstraints={{ top: 0, left: 0 }}
       initial={{ opacity: 0, scale: 0.8 }}

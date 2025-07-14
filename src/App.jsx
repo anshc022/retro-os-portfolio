@@ -9,6 +9,8 @@ import StudyIcon from "./assets/desktopIcons/study.png";
 import ProjectsIcon from "./assets/desktopIcons/projects.png";
 import ArtIcon from "./assets/desktopIcons/art.png";
 import SkillIcon from "./assets/desktopIcons/skills.png";
+import MailIcon from "./assets/desktopIcons/mail.png";
+import GameIcon from "./assets/desktopIcons/games.png";
 import back from "./assets/gif/desktop-bg.gif"
 import StickyNote from "./components/StickyNote";
 import useRetroSounds from "./utils/sounds"
@@ -22,7 +24,9 @@ import Study from "./pages/Study";
 import Experience from "./pages/Experience";
 import Art from "./pages/Art";
 import Skills from "./pages/Skills";
-import SkillsComputer from "./pages/SkillsComputer";
+import {motion} from "framer-motion";
+import RabbitGame from "./components/RabbitGame";
+import Connect from "./pages/Connect";
 
 export default function App() {
   const [booted, setBooted] = useState(false);
@@ -85,7 +89,27 @@ export default function App() {
               label="ArtStudio.exe"
               onClick={() => openWindow("art")}
             />
+            
+            
           </div>
+          <motion.div
+                  className="absolute top-64 right-5 flex flex-col items-center cursor-pointer select-none w-20 sm:w-44 sm:h-32 text-xs text-white"
+                  drag
+                  dragConstraints={{ top: 0, left: 0 }}
+                  onClick={() => openWindow("game")}
+                >
+                  <img src={GameIcon} alt={"Game.exe"} className="w-10 h-10 sm:w-20 sm:h-20 hover:border-2 hover:border-amber-300 hover:rounded-lg" />
+                  <span className="mt-1 text-black text-center text-sm sm:text-xl bg-amber-300 px-2 sm:px-5">Game.exe</span>
+           </motion.div>
+          <motion.div
+                  className="absolute bottom-44 right-5 flex flex-col items-center cursor-pointer select-none w-20 sm:w-44 sm:h-32 text-xs text-white"
+                  drag
+                  dragConstraints={{ top: 0, left: 0 }}
+                  onClick={() => openWindow("connect")}
+                >
+                  <img src={MailIcon} alt={"LetsConnect.exe"} className="w-10 h-10 sm:w-20 sm:h-20 hover:border-2 hover:border-amber-300 hover:rounded-lg" />
+                  <span className="mt-1 text-black text-center text-sm sm:text-xl bg-amber-300 px-2 sm:px-5">LetsConnect.exe</span>
+           </motion.div>
 
           {/* Windows */}
           {openApps.includes("about") && (
@@ -117,6 +141,16 @@ export default function App() {
           {openApps.includes("art") && (
             <Window title="ArtStudio.exe" onClose={() => closeWindow("art")}>
               <Art/>
+            </Window>
+          )}
+          {openApps.includes("game") && (
+            <Window title="Game.exe" onClose={() => closeWindow("game")}>
+              <RabbitGame />
+            </Window>
+          )}
+          {openApps.includes("connect") && (
+            <Window title="LetsConnect.exe" onClose={() => closeWindow("connect")}>
+              <Connect  />
             </Window>
           )}
           <StickyNote defaultText="Im Shruti! A full-stack developer blending modern code with nostalgic pixels."
