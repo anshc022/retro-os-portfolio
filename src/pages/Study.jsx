@@ -4,6 +4,7 @@ import StudyRoom from "../assets/me/study-room.gif"
 import paintWindow from "../assets/me/paint-window.jpeg"
 
 export default function Study() {
+    
     return(
 <>
 
@@ -25,9 +26,14 @@ export default function Study() {
                     <li className="hidden sm:block">-----------------------------------------------------</li>
                     </ul>
                 </div>
-                <button  className="absolute bottom-14 right-10 hover:bg-blue-400 text-sm sm:text-2xl flex justify-center items-center w-32 border-t-2 border-l-2 border-gray-200 border-b-2 border-r-2 border-b-gray-500 border-r-gray-500 bg-blue-600 text-white cursor-pointer shadow-md">
-                  <a target="_blank" className="h-full w-full">Resume</a>  
-                </button>
+                <a
+                    href="/resume/Resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute bottom-14 right-10 hover:bg-blue-400 text-sm sm:text-2xl flex justify-center items-center w-32 border-t-2 border-l-2 border-gray-200 border-b-2 border-r-2 border-b-gray-500 border-r-gray-500 bg-blue-600 text-white cursor-pointer shadow-md"
+                    >
+                    Resume
+                    </a>
            
             </div>
             
