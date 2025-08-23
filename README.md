@@ -73,7 +73,8 @@ npm run dev
 
 > This portfolio doesn’t just showcase my work — it **is** my work.
 
-```
-
 ---
+
+## 🪄 Live - https://helloshruti.vercel.app/
+
 
