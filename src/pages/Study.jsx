@@ -18,11 +18,11 @@ export default function Study() {
                    <ul>
                     <li>Education</li>
                     <li className=" hidden sm:block">-----------------------------------------------------</li>
-                    <li className="text-lg sm:text-2xl">Masters of Information and Technology </li> 
-                     <li>RMIT, Melbourne. (<span className="italic mr-2">2023 - 2024 </span>)</li>
+                    <li className="text-lg sm:text-2xl">B.Tech Computer Science Engineering</li> 
+                     <li>KIIT University, Bhubaneswar. (<span className="italic mr-2">2022 - 2026 </span>)</li>
                      <li className="hidden sm:block" >-----------------------------------------------------</li>
-                    <li className="text-lg sm:text-2xl">Bachelors Of Engineering - ECE  </li> 
-                    <li>Panimalar Engineering College, India. (<span className="italic sm:mr-2"> 2017 - 2021</span>)</li>
+                    <li className="text-lg sm:text-2xl">Specialization: AI/ML & Full-Stack Development</li> 
+                    <li>Currently 3rd Year Student (<span className="italic sm:mr-2">Expected Graduation: 2026</span>)</li>
                     <li className="hidden sm:block">-----------------------------------------------------</li>
                     </ul>
                 </div>
