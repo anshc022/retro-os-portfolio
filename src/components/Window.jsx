@@ -3,17 +3,21 @@ import { motion } from "framer-motion";
 import { X } from "lucide-react"; // optional close icon
 import { useEffect, useRef, useState } from "react";
 
-const Window = ({ title, children, onClose }) => {
+const Window = ({ title, children, onClose, onMinimize, initialPosition }) => {
   const ref = useRef(null);
   const [position, setPosition] = useState({ x: 100, y: 100 });
 
   useEffect(() => {
     const handleCenter = () => {
       if (ref.current) {
-        const { offsetWidth, offsetHeight } = ref.current;
-        const x = (window.innerWidth - offsetWidth) / 2;
-        const y = (window.innerHeight - offsetHeight) / 2;
-        setPosition({ x, y });
+        if (initialPosition && typeof initialPosition.x === 'number' && typeof initialPosition.y === 'number') {
+          setPosition({ x: initialPosition.x, y: initialPosition.y });
+        } else {
+          const { offsetWidth, offsetHeight } = ref.current;
+          const x = (window.innerWidth - offsetWidth) / 2;
+          const y = (window.innerHeight - offsetHeight) / 2;
+          setPosition({ x, y });
+        }
       }
     };
     handleCenter();
@@ -32,9 +36,14 @@ const Window = ({ title, children, onClose }) => {
         {/* Title Bar */}
         <div className="bg-gradient-to-r from-blue-800 to-blue-400 text-white text-lg px-2 py-1 flex justify-between items-center">
           <span>{title}</span>
-          <button onClick={onClose} className="hover:bg-red-600 p-1">
-            <X size={12} />
-          </button>
+          <div className="flex items-center gap-1">
+            {onMinimize && (
+              <button onClick={onMinimize} className="hover:bg-blue-600 p-1">_</button>
+            )}
+            <button onClick={onClose} className="hover:bg-red-600 p-1">
+              <X size={12} />
+            </button>
+          </div>
         </div>
 
         {/* Inner Content */}

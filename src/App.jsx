@@ -28,12 +28,14 @@ import {motion} from "framer-motion";
 import GameHub from "./components/GameHub";
 import Connect from "./pages/Connect";
 import Terminal from "./components/Terminal";
+import MusicPlayer from "./components/MusicPlayer";
 
 export default function App() {
   const [booted, setBooted] = useState(false);
   const [openApps, setOpenApps] = useState([]);
   const [theme, setTheme] = useState("morning");
   const [showImageNote, setShowImageNote] = useState(true); // Auto show when website opens
+  const [minimizedApps, setMinimizedApps] = useState([]); // Track minimized apps
   const { playClick } = useRetroSounds();
 
   const openWindow = (id) => {
@@ -43,7 +45,17 @@ export default function App() {
 
   const closeWindow = (id) => {
     setOpenApps((prev) => prev.filter((w) => w !== id));
+    setMinimizedApps((prev) => prev.filter((w) => w !== id));
   };
+  
+  const minimizeApp = (id) => {
+    setMinimizedApps((prev) => [...prev, id]);
+  };
+  
+  const restoreApp = (id) => {
+    setMinimizedApps((prev) => prev.filter((w) => w !== id));
+  };
+  
   const handleTheme =(theme) =>{
     setTheme(theme);
     // console.log(theme);
@@ -69,7 +81,7 @@ export default function App() {
             src={ankitaImg} 
             className="h-40 w-32 sm:h-60 sm:w-48 object-contain fixed bottom-10 left-1/2 transform -translate-x-1/2 z-10 cursor-pointer hover:scale-105 transition-transform"
             drag
-            dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+            /* Allow free movement across the viewport */
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 2 }}
@@ -145,6 +157,11 @@ export default function App() {
               label="Terminal.exe"
               onClick={() => openWindow("terminal")}
             />
+            <DesktopIcon
+              icon={ArtIcon}
+              label="Music.exe"
+              onClick={() => openWindow("music")}
+            />
             
             
           </div>
@@ -214,6 +231,34 @@ export default function App() {
               <Connect  />
             </Window>
           )}
+          {openApps.includes("music") && !minimizedApps.includes("music") && (
+            <Window 
+              title="Music.exe"
+              onClose={() => closeWindow("music")}
+              onMinimize={() => minimizeApp("music")}
+              initialPosition={{ x: 120, y: 120 }}
+            >
+              <MusicPlayer 
+                onMinimize={() => minimizeApp("music")}
+                onClose={() => closeWindow("music")}
+                showChrome={false}
+              />
+            </Window>
+          )}
+          
+          {/* Minimized Music Player */}
+          {openApps.includes("music") && minimizedApps.includes("music") && (
+            <div 
+              className="fixed bottom-16 left-4 bg-gray-300 border border-gray-600 p-2 cursor-pointer z-50"
+              onClick={() => restoreApp("music")}
+            >
+              <div className="flex items-center gap-2">
+                <span className="text-xs">🎵 Music.exe</span>
+                <span className="text-xs animate-pulse">♪</span>
+              </div>
+            </div>
+          )}
+          
           <Taskbar 
             onAppClick={openWindow} 
             onThemeChange={handleTheme} 
@@ -221,8 +266,6 @@ export default function App() {
             openApps={openApps}
             onCloseApp={closeWindow}
           />
-
-
         </div>
       )}
     </>
