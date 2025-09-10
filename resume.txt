@@ -1,0 +1,60 @@
+KIIT University
+ Ankita Rahi
+ Summary
+ Bhubaneswar, Odisha
+ +91-6387953827
+ 23052947@kiit.ac.in
+ www.ankitarahi.xyz
+ ankitarahi1477
+ ankita1477
+ 3rd-year B.Tech CSE student at KIIT University with expertise in AI/ML, full-stack development,
+ and entrepreneurship. Proven track record in hackathons with multiple awards and recognitions.
+ Education
+ 2023–2027 Bachelor of Technology in Computer Science Engineering, KIIT University, Bhubaneswar,
+ Odisha
+ CGPA: 1st Year: 8.75, 2nd Year: 8.52
+ 2022 Class XII (CBSE), Bethel Academy, 79%
+ 2020 Class X (CBSE), Bethel Academy, 79%
+ Technical Skills
+ Languages Python, JavaScript, TypeScript, C, C++
+ Web React.js, Next.js, Node.js, Express.js, HTML, CSS
+ AI/ML TensorFlow, OpenCV, NLP, BERT, LLMs, Ollama
+ Tools Git, Docker, FastAPI, MongoDB, MySQL
+ June
+September
+ 2025
+ Experience
+ AI Intern, ApanaGhr
+ ○ Contributing to AI/ML projects in rental housing ecosystem
+ ○ Developing solutions using JavaScript, TypeScript, and Python
+ 2025 Perplexity Campus Partner, KIIT
+ ○ Promoting Comet Browser and building community engagement
+ ○ Leading innovation initiatives and AI tools awareness
+ 2025–2026 Campus Ambassador, Unstop
+ ○ Leading campus networking and collaboration initiatives
+ ○ Bringing opportunities and competitions to student community
+ 2023–Present Co-founder, GrafikGalore
+ ○ Managing e-commerce operations and customer relations
+ ○ Specialized in graphic design and custom products
+ Projects
+ 2025 ThinkForge, Perplexity Hackathon
+ AI debate platform with historical figures using Sonar AI and React.js.
+ 2025 HackaTwin, MIT AI Hackathon
+ Hackathon management system with FastAPI, Next.js, and local LLM (43% email open rate).
+ 2025 Recora, MIT AI Hackathon
+ Privacy-first health assistant using LLMs and React (Top 10 from 800+ teams).
+ 1/2
+2025 Ninja Meeting AI, Personal
+ Real-time meeting transcription using RAG, BERT, and LLMs.
+ 2024 Women Safety Analytics, Smart India Hackathon
+ CCTV-integrated anomaly detection using AI/ML and OpenCV.
+ 2024 AI Mental Health Assistant, TechFrontier
+ Sentiment-aware chatbot using Python and NLP (1st Prize).
+ Achievements
+ 2025 MIT AI Hackathon- Top 10 Finalist (Global, 800+ teams)
+ 2024 TechFrontier Industry 4.0- Winner (1st Prize)
+ 2024 Smart India Hackathon- National Participant
+ Additional
+ Multiple hackathon participations with successful deliveries (2024-2025)
+ Active in AI/ML and full-stack development communities
+ 2/2

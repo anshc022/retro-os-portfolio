@@ -1,4 +1,4 @@
-import me from "../assets/me/shruti.jpeg"
+import me from "../assets/me/ankita.jpeg"
 import happy from "../assets/smiley/love-eyes.png"
 import StudyRoom from "../assets/me/study-room.gif"
 import paintWindow from "../assets/me/paint-window.jpeg"

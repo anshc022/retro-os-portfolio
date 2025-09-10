@@ -31,13 +31,16 @@ export default function Skills() {
     else if (partName.toLowerCase().includes("cpu")) setActiveSkill("backend");
     else if (partName.toLowerCase().includes("keyboard"))
       setActiveSkill("tools");
+    else if (partName.toLowerCase().includes("aiml"))
+      setActiveSkill("aiml");
     else setActiveSkill("unknown");
   };
 
   const skillsMap = {
-    frontend: ["React", "Next.js", "Tailwind", "Framer Motion"],
-    backend: ["Django", "Flask", "Node.js", "Firebase"],
-    tools: ["Git", "VSCode", "Figma", "Postman"],
+    frontend: ["React.js", "Next.js", "HTML5", "CSS3", "JavaScript", "TypeScript"],
+    backend: ["Node.js", "Express.js", "Python", "FastAPI", "C", "C++"],
+    tools: ["Git", "Docker", "MongoDB", "MySQL", "TensorFlow", "OpenCV"],
+    aiml: ["TensorFlow", "OpenCV", "NLP", "BERT", "LLMs", "Ollama"],
     unknown: ["🤖 Just clicked something random!"],
   };
 
@@ -69,6 +72,8 @@ export default function Skills() {
   Backend</button>
 <button onClick={() => handlePartClick({partName: "keyboard"})} className="hover:scale-110 absolute sm:bottom-44 bottom-10 left-10 sm:left-52 px-4 bg-blue-500 border-t border-l border-white border-b-2 border-r-2 border-b-gray-700 border-r-gray-700 shadow-md "> 
   Tools</button>
+<button onClick={() => handlePartClick({partName: "aiml"})} className="hover:scale-110 absolute top-10 right-5 sm:right-44 px-4 bg-green-500 border-t border-l border-white border-b-2 border-r-2 border-b-gray-700 border-r-gray-700 shadow-md "> 
+  AI/ML</button>
 
       {activeSkill && (
         <div className="absolute top-4 p-1 left-4 border-t-2 border-l-2 border-white border-b-4 border-r-4 border-b-gray-500 border-r-gray-500 bg-gray-200 shadow-md text-sm sm:text-lg w-[280px] sm:w-[400px] z-50 ">

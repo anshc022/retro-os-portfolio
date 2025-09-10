@@ -15,7 +15,7 @@ export default function About() {
             <img src={bunny}  className="absolute h-24  bottom-5 -right-2 "></img>
             </div>
             <div className="h-full w-[250px] sm:w-[300px] text-sm sm:text-lg">
-                Hey! I'm Ankita Rahi 👋 3rd-year CSE at KIIT who turns coffee into code ☕ Co-founder at GrafikGalore & Fasal Seva, AI intern at ApanaGhr. Made it to MIT AI Hackathon Top 10 (somehow) 🎯 I speak Python, React, and sarcasm fluently. Warning: May debug your life choices! 🤓
+                I'm Ankita Rahi, a 3rd-year B.Tech Computer Science student at KIIT University, Bhubaneswar. With expertise in AI/ML and full-stack development, I've earned recognition at prestigious hackathons including MIT AI Hackathon (Top 10/800+ teams) and Smart India Hackathon. As co-founder of GrafikGalore and an AI intern at ApanaGhr, I blend technical innovation with entrepreneurial spirit. I specialize in React.js, Python, AI/ML technologies, and creating impactful digital solutions that solve real-world problems.
             </div>
         </div>
 </>

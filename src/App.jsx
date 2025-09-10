@@ -11,7 +11,9 @@ import ArtIcon from "./assets/desktopIcons/art.png";
 import SkillIcon from "./assets/desktopIcons/skills.png";
 import MailIcon from "./assets/desktopIcons/mail.png";
 import GameIcon from "./assets/desktopIcons/games.png";
-import back from "./assets/gif/desktop-bg.gif"
+import TerminalIcon from "./assets/buttons/open-folder.png";
+import desktopBg from "./assets/gif/desktop-bg.gif"
+import ankitaImg from "./assets/me/ankita-cose-no-bg.png"
 import StickyNote from "./components/StickyNote";
 import useRetroSounds from "./utils/sounds"
 import butterfly from "./assets/gif/butterfly.gif"
@@ -23,13 +25,15 @@ import Experience from "./pages/Experience";
 import Art from "./pages/Art";
 import Skills from "./pages/Skills";
 import {motion} from "framer-motion";
-import RabbitGame from "./components/RabbitGame";
+import GameHub from "./components/GameHub";
 import Connect from "./pages/Connect";
+import Terminal from "./components/Terminal";
 
 export default function App() {
   const [booted, setBooted] = useState(false);
   const [openApps, setOpenApps] = useState([]);
   const [theme, setTheme] = useState("morning");
+  const [showImageNote, setShowImageNote] = useState(true); // Auto show when website opens
   const { playClick } = useRetroSounds();
 
   const openWindow = (id) => {
@@ -50,11 +54,60 @@ export default function App() {
       {booted && (
         <div className="h-screen cursor w-screen overflow-hidden relative">
           {/* <CustomCursor/> */}
-          <img src={back} className="h-full w-full object-cover fixed top-0"></img>
+          <img 
+            src={desktopBg} 
+            className="h-full w-full object-cover fixed top-0"
+            alt="Desktop Background"
+          />
            {theme == "night" && <img src={night} className="h-full w-full object-cover fixed top-0"></img>
           //  <div className="h-screen w-screen bg-gradient-to-r from-black/60 via-blue-900/20 to-black/60  absolute top-0">
           }
            <img src={butterfly} className="h-24 w-24 object-cover fixed bottom-20 right-10 cursor-pointer"></img>
+          
+          {/* Ankita Image on Desktop */}
+          <motion.img 
+            src={ankitaImg} 
+            className="h-40 w-32 sm:h-60 sm:w-48 object-contain fixed bottom-10 left-1/2 transform -translate-x-1/2 z-10 cursor-pointer hover:scale-105 transition-transform"
+            drag
+            dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 2 }}
+            onClick={() => {
+              playClick();
+              setShowImageNote(!showImageNote);
+            }}
+            alt="Ankita"
+          />
+          
+          {/* Speech Bubble Sticky Note */}
+          {showImageNote && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.5, y: 20 }}
+              className="fixed bottom-72 left-1/2 transform -translate-x-1/2 z-20"
+            >
+              <div className="relative bg-yellow-300 border-2 border-gray-400 rounded-lg p-4 shadow-lg max-w-xs">
+                <div className="text-black text-sm font-medium">
+                  👋 Hi! I'm Ankita Rahi! A 3rd-year B.Tech CSE student at KIIT University specializing in AI/ML and full-stack development. Click around to explore my portfolio!
+                </div>
+                {/* Speech bubble arrow */}
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-yellow-300"></div>
+                {/* Close button */}
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowImageNote(false);
+                  }}
+                  className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-red-600"
+                >
+                  ×
+                </button>
+              </div>
+            </motion.div>
+          )}
+          
           {/* Desktop Icons */}
           <div className="absolute top-4 left-4 grid grid-cols-1 sm:grid-cols-2 gap-6">
             <DesktopIcon
@@ -86,6 +139,11 @@ export default function App() {
               icon={ArtIcon}
               label="ArtStudio.exe"
               onClick={() => openWindow("art")}
+            />
+            <DesktopIcon
+              icon={TerminalIcon}
+              label="Terminal.exe"
+              onClick={() => openWindow("terminal")}
             />
             
             
@@ -143,7 +201,12 @@ export default function App() {
           )}
           {openApps.includes("game") && (
             <Window title="Game.exe" onClose={() => closeWindow("game")}>
-              <RabbitGame />
+              <GameHub />
+            </Window>
+          )}
+          {openApps.includes("terminal") && (
+            <Window title="Terminal.exe" onClose={() => closeWindow("terminal")}>
+              <Terminal />
             </Window>
           )}
           {openApps.includes("connect") && (
@@ -151,9 +214,13 @@ export default function App() {
               <Connect  />
             </Window>
           )}
-          <StickyNote defaultText="Im Shruti! A full-stack developer blending modern code with nostalgic pixels."
-           color="bg-yellow-300"/>
-          <Taskbar onAppClick={openWindow} onThemeChange={handleTheme} currentTheme={theme} />
+          <Taskbar 
+            onAppClick={openWindow} 
+            onThemeChange={handleTheme} 
+            currentTheme={theme}
+            openApps={openApps}
+            onCloseApp={closeWindow}
+          />
 
 
         </div>

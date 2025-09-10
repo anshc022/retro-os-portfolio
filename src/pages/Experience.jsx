@@ -22,30 +22,39 @@ const panelWidth = screenWidth < 640 ? "310px" : "500px";
     topLeft: { scale: 1.5, x: "25%", y: "25%" },
     center: { scale: 2, x: "40%", y: "-50%" },
     bottomRight: { scale: 1.5, x: "-10%", y: "10%" },
+    bottomLeft: { scale: 1.5, x: "20%", y: "-15%" },
   };
   const focusText = {
   topLeft: (
     <>
-      <div className="w-full bg-blue-500 text-white leading-sm pl-2">Ford Credit (2021–2023)</div><br />
-      - Upgraded Angular UIs for finance tools, boosting UX by 20%<br />
-      - Integrated Adobe Client into Java backend workflows<br />
-      - Collaborated in Agile teams & peer-reviewed code
+      <div className="w-full bg-blue-500 text-white leading-sm pl-2">Co-founder, GrafikGalore (2023–Present)</div><br />
+      - Managing e-commerce operations and customer relations<br />
+      - Specialized in graphic design and custom products<br />
+      - Building brand presence and managing business operations
     </>
   ),
   center: (
     <>
-      <div className="w-full bg-blue-500 text-white leading-sm pl-2">BrandOPC Solutions (2023–2024)</div><br />
-      - Built full-stack apps with React + Django<br />
-      - Created reusable UIs, reduced testing time by 30%<br />
-      - Led Agile sprints with product teams
+      <div className="w-full bg-blue-500 text-white leading-sm pl-2">AI Intern, ApanaGhr (June–Sep 2025)</div><br />
+      - Contributing to AI/ML projects in rental housing ecosystem<br />
+      - Developing solutions using JavaScript, TypeScript, and Python<br />
+      - Working on innovative AI applications for real estate
     </>
   ),
   bottomRight: (
     <>
-      <div className="w-full bg-blue-500 text-white leading-sm pl-2">Freelance Developer (2025–Now)</div><br />
-      - Delivered web apps & eCommerce sites (React, Next.js, Flask)<br />
-      - Managed entire SDLC from brief to launch<br />
-      - Gained top ratings for speed, quality & comms
+      <div className="w-full bg-blue-500 text-white leading-sm pl-2">Campus Roles (2025–2026)</div><br />
+      - Perplexity Campus Partner, KIIT: Promoting Comet Browser<br />
+      - Campus Ambassador, Unstop: Leading networking initiatives<br />
+      - Building community engagement and innovation awareness
+    </>
+  ),
+  bottomLeft: (
+    <>
+      <div className="w-full bg-blue-500 text-white leading-sm pl-2">Co-founder & CMO, Fasal Seva (2024–Present)</div><br />
+      - Leading marketing strategies and brand development<br />
+      - Managing agricultural technology initiatives<br />
+      - Driving growth and farmer engagement programs
     </>
   ),
 };
@@ -80,21 +89,27 @@ const panelWidth = screenWidth < 640 ? "310px" : "500px";
         <div className="absolute bottom-5 sm:bottom-14 w-full justify-between flex flex-row sm:px-10 p-5">
           <button
             onClick={() => setFocus("topLeft")}
-            className="hover:bg-blue-400 text-sm sm:text-2xl flex justify-center items-center w-20 sm:w-32 border-t-2 border-l-2 border-gray-200 border-b-2 border-r-2 border-b-gray-500 border-r-gray-500 bg-blue-600 text-white cursor-pointer shadow-md"
+            className="hover:bg-blue-400 text-sm sm:text-lg flex justify-center items-center w-16 sm:w-24 border-t-2 border-l-2 border-gray-200 border-b-2 border-r-2 border-b-gray-500 border-r-gray-500 bg-blue-600 text-white cursor-pointer shadow-md"
           >
-            2021 - 2023
+            GrafikGalore
           </button>
           <button
             onClick={() => setFocus("center")}
-            className="hover:bg-blue-400 text-sm sm:text-2xl flex justify-center items-center w-20 sm:w-32 border-t-2 border-l-2 border-gray-200 border-b-2 border-r-2 border-b-gray-500 border-r-gray-500 bg-blue-600 text-white cursor-pointer shadow-md"
+            className="hover:bg-blue-400 text-sm sm:text-lg flex justify-center items-center w-16 sm:w-24 border-t-2 border-l-2 border-gray-200 border-b-2 border-r-2 border-b-gray-500 border-r-gray-500 bg-blue-600 text-white cursor-pointer shadow-md"
           >
-            2023 - 2024
+            ApanaGhr
+          </button>
+          <button
+            onClick={() => setFocus("bottomLeft")}
+            className="hover:bg-blue-400 text-sm sm:text-lg flex justify-center items-center w-16 sm:w-24 border-t-2 border-l-2 border-gray-200 border-b-2 border-r-2 border-b-gray-500 border-r-gray-500 bg-blue-600 text-white cursor-pointer shadow-md"
+          >
+            Fasal Seva
           </button>
           <button
             onClick={() => setFocus("bottomRight")}
-            className="hover:bg-blue-400 text-sm sm:text-2xl flex justify-center items-center w-20 sm:w-32 border-t-2 border-l-2 border-gray-200 border-b-2 border-r-2 border-b-gray-500 border-r-gray-500 bg-blue-600 text-white cursor-pointer shadow-md"
+            className="hover:bg-blue-400 text-sm sm:text-lg flex justify-center items-center w-16 sm:w-24 border-t-2 border-l-2 border-gray-200 border-b-2 border-r-2 border-b-gray-500 border-r-gray-500 bg-blue-600 text-white cursor-pointer shadow-md"
           >
-            2025 -
+            Campus
           </button>
           
         </div>
