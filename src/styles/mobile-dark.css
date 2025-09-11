@@ -1,0 +1,118 @@
+/* Mobile and Touch Optimizations */
+.touch-active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
+
+/* Larger touch targets on mobile */
+@media (max-width: 768px) {
+  .desktop-icon {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 8px;
+  }
+  
+  .taskbar-button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .window-controls button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Dark Mode Styles */
+.dark {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --border-color: #404040;
+}
+
+.dark .bg-gray-200 {
+  background-color: var(--bg-secondary) !important;
+}
+
+.dark .bg-gray-300 {
+  background-color: var(--bg-secondary) !important;
+}
+
+.dark .bg-gray-400 {
+  background-color: #404040 !important;
+}
+
+.dark .bg-white {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.dark .text-black {
+  color: var(--text-primary) !important;
+}
+
+.dark .border-gray-400,
+.dark .border-gray-300,
+.dark .border-gray-500 {
+  border-color: var(--border-color) !important;
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .border-gray-400,
+  .border-gray-300,
+  .border-gray-500 {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus styles for keyboard navigation */
+button:focus-visible,
+[tabindex]:focus-visible,
+input:focus-visible {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+/* Better mobile scrolling */
+@media (max-width: 768px) {
+  .window-content {
+    -webkit-overflow-scrolling: touch;
+  }
+}

@@ -10,7 +10,6 @@ You'll find sections like:
 
 - 🧑‍💻 About.exe — a window into who I am
 - 💼 Projects.exe — selected works & experiments
-- 🎨 ArtStudio.exe — a creative corner where I paint after hours
 - 📬 Contact.exe — ways to connect
 - 🐰 BootLoader — a pixel rabbit welcomes you on load
 
@@ -44,7 +43,7 @@ You'll find sections like:
 1. **Clone the repo**
 
 ```bash
-git clone https://github.com/shrutitaylor/retro-os-portfolio.git
+git clone https://github.com/anshc022/retro-os-portfolio.git
 cd retro-os-portfolio
 ```
 
@@ -75,6 +74,6 @@ npm run dev
 
 ---
 
-## 🪄 Live - https://helloshruti.vercel.app/
+## 🪄 Live - https://ankitarahi.vercel.app/
 
 

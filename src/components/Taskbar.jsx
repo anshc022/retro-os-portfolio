@@ -7,12 +7,12 @@ import AboutIcon from "../assets/desktopIcons/about.png";
 import ExperienceIcon from "../assets/desktopIcons/experience.png";
 import StudyIcon from "../assets/desktopIcons/study.png";
 import ProjectsIcon from "../assets/desktopIcons/projects.png";
-import ArtIcon from "../assets/desktopIcons/art.png";
 import LinkedIn from "../assets/desktopIcons/linkedin-pixel.png";
 import Github from "../assets/desktopIcons/github-pixel.png";
 import MailIcon from "../assets/desktopIcons/mail.png";
+import CertificateIcon from "../assets/desktopIcons/skills.png";
 
-export default function Taskbar({ onAppClick, onThemeChange, currentTheme }) {
+export default function Taskbar({ onAppClick, onThemeChange, currentTheme, isDarkMode }) {
   const [showMenu, setShowMenu] = useState(false);
   const [time, setTime] = useState(() => new Date());
   const [batterySupported, setBatterySupported] = useState(false);
@@ -98,12 +98,12 @@ export default function Taskbar({ onAppClick, onThemeChange, currentTheme }) {
           </div>
           <div
             onClick={() => {
-              onAppClick("art");
+              onAppClick("certificates");
               setShowMenu(false);
             }}
             className="px-3 py-2 hover:bg-blue-600 border-b-2 border-gray-300 hover:text-white cursor-pointer"
           >
-            <img src={ArtIcon} alt="Art" className="inline-block w-4 h-4 mr-2" /> ArtStudio.exe
+            <img src={CertificateIcon} alt="Certificates" className="inline-block w-4 h-4 mr-2" /> Certificates.exe
           </div>
           <div
             onClick={() => {
@@ -118,7 +118,12 @@ export default function Taskbar({ onAppClick, onThemeChange, currentTheme }) {
       )}
 
       {/* Retro Taskbar */}
-      <div className="fixed bottom-0 font-bold left-0 right-0 border-t border-l border-white border-b-2 border-r-2 border-b-gray-500 border-r-gray-500 bg-gray-200 shadow-md text-black text-sm sm:text-2xl p-1 flex items-center z-40">
+            {/* Retro Taskbar */}
+      <div className={`fixed bottom-0 left-0 right-0 h-12 flex items-center justify-between px-2 border-t-2 border-gray-300 shadow-lg z-40 ${
+        isDarkMode 
+          ? 'bg-gray-800 border-gray-600 text-gray-200' 
+          : 'bg-gray-400 text-black'
+      }`}>
         <button
           onClick={toggleMenu}
           className="mr-4 px-4 sm:w-32 border-t border-l border-white border-b-2 border-r-2 border-b-gray-500 border-r-gray-500 bg-gray-200 shadow-inner active:shadow-none hover:bg-gray-400"

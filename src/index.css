@@ -1,3 +1,4 @@
+@import url('./styles/mobile-dark.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,6 +7,16 @@
 body {
   font-family: 'retro';
   /* cursor: none; */
+}
+
+/* Custom scrollbar utilities */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 @font-face {
   font-family: "retro";

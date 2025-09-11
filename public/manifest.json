@@ -1,0 +1,36 @@
+{
+  "name": "Ankita Rahi - Retro OS Portfolio",
+  "short_name": "AnkitaOS",
+  "description": "A retro OS-inspired portfolio showcasing Ankita Rahi's skills and projects",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#c0c0c0",
+  "theme_color": "#008080",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/vite.jpeg", 
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/vite.jpeg",
+      "sizes": "512x512", 
+      "type": "image/jpeg"
+    }
+  ],
+  "categories": ["portfolio", "retro", "technology"],
+  "screenshots": [
+    {
+      "src": "/vite.jpeg",
+      "sizes": "1280x720",
+      "type": "image/jpeg"
+    }
+  ]
+}

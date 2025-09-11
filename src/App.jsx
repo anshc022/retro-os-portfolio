@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BootLoader from "./components/BootLoader";
 import DesktopIcon from "./components/DesktopIcon";
 import Window from "./components/Window";
@@ -7,11 +7,11 @@ import AboutIcon from "./assets/desktopIcons/about.png";
 import ExperienceIcon from "./assets/desktopIcons/experience.png";
 import StudyIcon from "./assets/desktopIcons/study.png";
 import ProjectsIcon from "./assets/desktopIcons/projects.png";
-import ArtIcon from "./assets/desktopIcons/art.png";
 import SkillIcon from "./assets/desktopIcons/skills.png";
 import MailIcon from "./assets/desktopIcons/mail.png";
 import GameIcon from "./assets/desktopIcons/games.png";
 import TerminalIcon from "./assets/buttons/open-folder.png";
+import CertificateIcon from "./assets/desktopIcons/skills.png";
 import desktopBg from "./assets/gif/desktop-bg.gif"
 import ankitaImg from "./assets/me/ankita-cose-no-bg.png"
 import StickyNote from "./components/StickyNote";
@@ -22,13 +22,14 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Study from "./pages/Study";
 import Experience from "./pages/Experience";
-import Art from "./pages/Art";
 import Skills from "./pages/Skills";
+import Certificates from "./pages/Certificates";
 import {motion} from "framer-motion";
 import GameHub from "./components/GameHub";
 import Connect from "./pages/Connect";
 import Terminal from "./components/Terminal";
 import MusicPlayer from "./components/MusicPlayer";
+import { analytics, pwa, mobile, a11y } from "./utils/appUtils";
 
 export default function App() {
   const [booted, setBooted] = useState(false);
@@ -36,35 +37,145 @@ export default function App() {
   const [theme, setTheme] = useState("morning");
   const [showImageNote, setShowImageNote] = useState(true); // Auto show when website opens
   const [minimizedApps, setMinimizedApps] = useState([]); // Track minimized apps
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [showInstallPrompt, setShowInstallPrompt] = useState(false);
   const { playClick } = useRetroSounds();
+
+  // Initialize PWA and analytics
+  useEffect(() => {
+    pwa.init();
+    analytics.track('app_loaded');
+    
+    // Check if PWA can be installed
+    if (!pwa.isInstalled()) {
+      setTimeout(() => setShowInstallPrompt(true), 5000);
+    }
+    
+    // Dark mode from localStorage
+    const savedDarkMode = localStorage.getItem('ankita-dark-mode') === 'true';
+    setIsDarkMode(savedDarkMode);
+    
+    // Keyboard shortcuts
+    const handleKeyboard = (e) => {
+      if (e.ctrlKey || e.metaKey) {
+        switch (e.key) {
+          case 'd':
+            e.preventDefault();
+            toggleDarkMode();
+            break;
+          case 'k':
+            e.preventDefault();
+            openWindow('terminal');
+            break;
+        }
+      }
+      
+      if (e.key === 'Escape' && openApps.length > 0) {
+        closeWindow(openApps[openApps.length - 1]);
+      }
+    };
+    
+    document.addEventListener('keydown', handleKeyboard);
+    return () => document.removeEventListener('keydown', handleKeyboard);
+  }, []);
 
   const openWindow = (id) => {
     playClick();
     setOpenApps((prev) => [...new Set([...prev, id])]);
+    analytics.track('app_opened', { app: id });
+    a11y.announceToScreenReader(`Opened ${id} application`);
   };
 
   const closeWindow = (id) => {
     setOpenApps((prev) => prev.filter((w) => w !== id));
     setMinimizedApps((prev) => prev.filter((w) => w !== id));
+    analytics.track('app_closed', { app: id });
+    a11y.announceToScreenReader(`Closed ${id} application`);
   };
   
   const minimizeApp = (id) => {
     setMinimizedApps((prev) => [...prev, id]);
+    analytics.track('app_minimized', { app: id });
   };
   
   const restoreApp = (id) => {
     setMinimizedApps((prev) => prev.filter((w) => w !== id));
+    analytics.track('app_restored', { app: id });
   };
   
-  const handleTheme =(theme) =>{
+  const handleTheme = (theme) => {
     setTheme(theme);
-    // console.log(theme);
-  }
+    analytics.track('theme_changed', { theme });
+  };
+  
+  const toggleDarkMode = () => {
+    const newDarkMode = !isDarkMode;
+    setIsDarkMode(newDarkMode);
+    localStorage.setItem('ankita-dark-mode', newDarkMode);
+    analytics.track('dark_mode_toggled', { enabled: newDarkMode });
+    a11y.announceToScreenReader(`${newDarkMode ? 'Enabled' : 'Disabled'} dark mode`);
+  };
+  
+  const installPWA = async () => {
+    const installed = await pwa.install();
+    if (installed) {
+      setShowInstallPrompt(false);
+    }
+  };
   return (
     <>
       {!booted && <BootLoader onFinish={() => setBooted(true)} />}
       {booted && (
-        <div className="h-screen cursor w-screen overflow-hidden relative">
+        <div className={`h-screen cursor w-screen overflow-hidden relative ${isDarkMode ? 'dark' : ''}`}>
+          {/* PWA Install Prompt */}
+          {showInstallPrompt && !pwa.isInstalled() && (
+            <motion.div
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="fixed top-4 right-4 z-50 bg-blue-600 text-white p-3 rounded shadow-lg"
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-sm">Install Ankita's Portfolio</span>
+                <button
+                  onClick={() => setShowInstallPrompt(false)}
+                  className="text-white hover:bg-blue-700 px-2 py-1 rounded text-xs"
+                  aria-label="Close install prompt"
+                >
+                  ×
+                </button>
+              </div>
+              <button
+                onClick={installPWA}
+                className="bg-white text-blue-600 px-3 py-1 rounded text-sm hover:bg-gray-100"
+              >
+                Install App
+              </button>
+            </motion.div>
+          )}
+          
+          {/* Dark Mode Toggle */}
+          <button
+            onClick={toggleDarkMode}
+            className={`fixed top-4 left-4 z-50 p-2 rounded-full transition-colors ${
+              isDarkMode 
+                ? 'bg-yellow-400 text-gray-900 hover:bg-yellow-300' 
+                : 'bg-gray-800 text-yellow-400 hover:bg-gray-700'
+            }`}
+            aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+            title="Ctrl+D to toggle"
+          >
+            {isDarkMode ? '☀️' : '🌙'}
+          </button>
+          
+          {/* Accessibility skip link */}
+          <a 
+            href="#main-content" 
+            className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-blue-600 text-white p-2 z-50"
+          >
+            Skip to main content
+          </a>
+          
+          <div id="main-content" className={`h-full w-full ${isDarkMode ? 'filter brightness-75 contrast-125' : ''}`}>
           {/* <CustomCursor/> */}
           <img 
             src={desktopBg} 
@@ -148,19 +259,19 @@ export default function App() {
               onClick={() => openWindow("skills")}
             />
             <DesktopIcon
-              icon={ArtIcon}
-              label="ArtStudio.exe"
-              onClick={() => openWindow("art")}
-            />
-            <DesktopIcon
               icon={TerminalIcon}
               label="Terminal.exe"
               onClick={() => openWindow("terminal")}
             />
             <DesktopIcon
-              icon={ArtIcon}
+              icon={SkillIcon}
               label="Music.exe"
               onClick={() => openWindow("music")}
+            />
+            <DesktopIcon
+              icon={CertificateIcon}
+              label="Certificates.exe"
+              onClick={() => openWindow("certificates")}
             />
             
             
@@ -211,11 +322,6 @@ export default function App() {
               {/* <SkillsComputer /> */}
             </Window>
           )}
-          {openApps.includes("art") && (
-            <Window title="ArtStudio.exe" onClose={() => closeWindow("art")}>
-              <Art/>
-            </Window>
-          )}
           {openApps.includes("game") && (
             <Window title="Game.exe" onClose={() => closeWindow("game")}>
               <GameHub />
@@ -229,6 +335,16 @@ export default function App() {
           {openApps.includes("connect") && (
             <Window title="LetsConnect.exe" onClose={() => closeWindow("connect")}>
               <Connect  />
+            </Window>
+          )}
+          {openApps.includes("certificates") && !minimizedApps.includes("certificates") && (
+            <Window 
+              title="Certificates.exe"
+              onClose={() => closeWindow("certificates")}
+              onMinimize={() => minimizeApp("certificates")}
+              initialPosition={{ x: 100, y: 100 }}
+            >
+              <Certificates />
             </Window>
           )}
           {openApps.includes("music") && !minimizedApps.includes("music") && (
@@ -265,7 +381,9 @@ export default function App() {
             currentTheme={theme}
             openApps={openApps}
             onCloseApp={closeWindow}
+            isDarkMode={isDarkMode}
           />
+          </div>
         </div>
       )}
     </>
